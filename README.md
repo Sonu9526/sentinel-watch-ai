@@ -43,6 +43,25 @@ FileGuard AI is a sophisticated real-time ransomware detection and monitoring sy
     npm run dev
     ```
 
+## 🧠 ML Model Architecture
+
+The core detection engine is located in the `ml_engine/` directory. It uses a **Random Forest Classifier** trained on behavioral features.
+
+### Features Used:
+- **Entropy**: Shannon entropy of the file (High entropy > 7.0 often indicates encryption).
+- **Modification Rate**: Frequency of file changes in a given time window.
+- **Rename Count**: Number of file renames detected.
+- **File Size**: Abnormal file sizes can be an indicator.
+
+### How to Retrain the Model
+1.  Navigate to the `ml_engine` directory.
+2.  Update `dataset.csv` with new samples.
+3.  Run the training script:
+    ```bash
+    python3 train_model.py
+    ```
+4.  The model will be saved as `ransomware_model.pkl`.
+
 ## 🌐 Deployment
 
 This project is configured for deployment on **GitHub Pages**.
